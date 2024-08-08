@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mysql-deep-dive:
+    image: mysql:8.0
+    container_name: mysql-deep-dive
+    volumes:
+      - ./scripts/init-mysql-deep-dive.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - mysql-deep-dive:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123!@#abcABC
+      MYSQL_DATABASE: mysql_deep_dive
+      MYSQL_USER: mysql_deep_dive
+      MYSQL_PASSWORD: 123!@#abcABC
+    restart: always
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql-deep-dive:
+    driver: local 

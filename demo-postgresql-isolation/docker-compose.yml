@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  postgres-deep-dive:
+    image: postgres:13
+    container_name: postgres-deep-dive
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: postgres-deep-dive
+      POSTGRES_USER: postgres-deep-dive
+      POSTGRES_PASSWORD: 123!@#abcABC
+    volumes:
+      - ./scripts/init-postgres-deep-dive.sh:/docker-entrypoint-initdb.d/init-postgres-deep-dive.sh
+      - postgres-deep-dive:/var/lib/postgresql/data
+
+volumes:
+  postgres-deep-dive:
+    driver: local 
